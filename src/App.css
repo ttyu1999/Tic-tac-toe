@@ -1,38 +1,139 @@
-.App {
+:root {
+  font-size: 16px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  letter-spacing: .25rem;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #FFA726;
+}
+
+#root {
+  width: min(500px, 100%);
+}
+
+.tic-tac-toe {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-inline: 1rem;
+}
+
+.tic-tac-toe :is(h1, h2) {
+  color: #f0f0f0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.tic-tac-toe h1 {
+  font-size: 3.5rem;
+  text-shadow: .25rem .25rem 0 #d98e20;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.tic-tac-toe h2 {
+  font-size: 2rem;
+  text-shadow: .15rem .15rem 0 #d98e20;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container ul {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.container ul li {
+  user-select: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.container ul li:has(button:empty) {
+  background-color: transparent;
+}
+
+button {
+  --shadow: #d98e20;
+  border: none;
+  padding: 2rem;
+  position: relative;
+  transition: box-shadow .3s ease-out; 
+  box-shadow: inset 0 -8px 0 0 rgba(0,0,0,.2),
+    1px 1px 0 0 var(--shadow),
+    2px 2px 0 0 var(--shadow),
+    3px 3px 0 0 var(--shadow),
+    4px 4px 0 0 var(--shadow),
+    5px 5px 0 0 var(--shadow),
+    6px 6px 0 0 var(--shadow),
+    7px 7px 0 0 var(--shadow),
+    8px 8px 0 0 var(--shadow),
+    9px 9px 0 0 var(--shadow);
+}
+
+button span {
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) perspective(250px) rotateX(30deg);
+  transform-style: preserve-3d;
+  transition: transform .3s ease-out;
+}
+
+button:active {
+  box-shadow:inset 0 -4px 0 0 rgba(0,0,0,.2),
+    1px 1px 0 0 var(--shadow),
+    2px 2px 0 0 var(--shadow),
+    3px 3px 0 0 var(--shadow),
+    4px 4px 0 0 var(--shadow),
+    5px 5px 0 0 var(--shadow);
+}
+
+button:active span {
+  transform: translate(-50%, -47%) perspective(250px) rotateX(30deg);
+}
+
+.container ul li button {
+  font-size: 4rem;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+}
+
+.X {
+  --primary__shadow: #359ed0;
+  color: #53bbec;
+  text-shadow: 0 1px 0 var(--primary__shadow),
+  0 2px 0 var(--primary__shadow),
+  0 3px 0 var(--primary__shadow);
+}
+
+.O {
+  --primary__shadow: #ba4444;
+  color: #ec5353;
+  text-shadow: 0 1px 0 var(--primary__shadow),
+  0 2px 0 var(--primary__shadow),
+  0 3px 0 var(--primary__shadow);
+}
+
+.reset {
+  font-size: 1.5rem;
+  background-color: #16b5ff;
+}
+
+.reset span {
+  color: #fff;
+}
+
+@media screen and (max-width: 501px) {
+  :root {
+    font-size: 11px;
   }
 }
